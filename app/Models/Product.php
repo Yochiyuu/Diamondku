@@ -6,5 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    //
+    protected $fillable = ['category_id', 'name', 'price', 'provider_code'];
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

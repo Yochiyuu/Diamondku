@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: #050505;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Glassmorphism Navbar */
+.glass-nav {
+    background: rgba(5, 5, 5, 0.6);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Glassmorphism Product Card & Spanduk */
+.glass-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+/* Neon Green Glow Effect on Text */
+.glow-text {
+    text-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+}
+
+/* Neon Green Active Status Glow */
+.status-glow {
+    box-shadow: 0 0 5px #10b981;
+}
+
+/* Background Blobs for Atmosphere */
+.blob {
+    position: absolute;
+    filter: blur(90px);
+    z-index: -1;
+    opacity: 0.3;
+}
