@@ -145,17 +145,12 @@
 
                 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 md:gap-6">
                     @forelse ($categories as $category)
-                        <a href="/product/{{ $category->id }}"
+                        <a href="/product/{{ $category->slug }}"
                             class="glass-card rounded-2xl p-4 group cursor-pointer hover:-translate-y-2 hover:border-emerald-500/50 hover:bg-emerald-900/10 transition-all duration-300 relative overflow-hidden flex flex-col h-full border border-white/5 shadow-[0_0_10px_rgba(0,0,0,0.3)]">
                             <div
                                 class="aspect-[4/5] rounded-xl bg-[#0a0a0a] mb-5 overflow-hidden relative border border-white/5">
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-[#050505] to-transparent opacity-80 z-10">
-                                </div>
-                                <div
-                                    class="w-full h-full flex items-center justify-center text-5xl group-hover:scale-110 transition-transform duration-500 opacity-60">
-                                    👾
-                                </div>
+                                <img src="{{ asset('images/' . $category->image_url) }}" alt="{{ $category->name }}"
+                                    class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500">
                             </div>
                             <div class="mt-auto">
                                 <h3
