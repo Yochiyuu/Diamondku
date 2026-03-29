@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DiamondKu | Premium Game Top Up Store</title>
+    <title>DiamondKu - Top Up Store</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
@@ -17,9 +17,7 @@
     <nav class="fixed w-full top-0 z-50 glass-nav py-4">
         <div class="container mx-auto px-6 max-w-7xl flex justify-between items-center">
             <a href="/" class="text-2xl font-extrabold tracking-tighter flex items-center gap-2">
-                <span
-                    class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-black text-sm">✦</span>
-                Diamond<span class="text-emerald-400">Ku</span>
+                Diamond<span class="text-emerald-400 inline -ml-1">Ku</span>
             </a>
 
             <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
@@ -44,90 +42,72 @@
                     class="relative w-full rounded-3xl overflow-hidden glass-card border border-white/5 shadow-[0_0_30px_rgba(0,0,0,0.4)] group">
 
                     <div id="slider-track"
-                        class="flex transition-transform duration-700 ease-in-out w-[300%] h-[400px] md:h-[380px]">
+                        class="flex transition-transform duration-700 ease-in-out w-[300%] h-[400px] md:h-[450px]">
 
-                        <div
-                            class="w-1/3 h-full relative flex flex-col md:flex-row items-center justify-between p-10 md:p-16 overflow-hidden">
+                        <div class="w-1/3 h-full relative overflow-hidden group">
+                            <img src="{{ asset('images/mobile_legends_banner.jpg') }}" alt="Banner Promo"
+                                class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105">
+
                             <div
-                                class="absolute inset-0 bg-gradient-to-r from-emerald-600/20 to-transparent opacity-40">
+                                class="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/80 to-transparent">
                             </div>
-                            <div class="md:w-3/5 text-center md:text-left relative z-10">
-                                <div
-                                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 text-xs font-semibold tracking-widest mb-6 uppercase status-glow">
-                                    🔥 WEEKEND FLASH SALE
-                                </div>
-                                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-4">
+
+                            <div class="relative z-10 h-full flex flex-col justify-center p-10 md:p-16 w-full md:w-2/3">
+                                <h1
+                                    class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-4 drop-shadow-lg">
                                     Mobile Legends <br />
                                     <span
-                                        class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">Diskon
+                                        class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">Diskon
                                         20% Hari Ini.</span>
                                 </h1>
                                 <a href="#games"
-                                    class="inline-flex items-center gap-2 px-8 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-full transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(52,211,153,0.3)] text-sm">
+                                    class="inline-flex items-center gap-2 px-8 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-full transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(52,211,153,0.3)] text-sm w-max mt-4">
                                     Top Up Sekarang ➔
                                 </a>
                             </div>
-                            <div class="md:w-2/5 flex items-center justify-center mt-10 md:mt-0 relative z-10">
-                                <div
-                                    class="w-40 h-40 md:w-56 md:h-56 rounded-full border border-emerald-500/20 bg-gradient-to-br from-emerald-900/40 to-black/30 flex items-center justify-center text-7xl md:text-9xl status-glow text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400 glow-text">
-                                    ⚔️
-                                </div>
-                            </div>
                         </div>
 
-                        <div
-                            class="w-1/3 h-full relative flex flex-col md:flex-row items-center justify-between p-10 md:p-16 overflow-hidden">
-                            <div class="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-transparent opacity-40">
+                        <div class="w-1/3 h-full relative overflow-hidden group">
+                            <img src="{{ asset('images/valorant_banner.jpg') }}" alt="Banner Promo"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/80 to-transparent">
                             </div>
-                            <div class="md:w-3/5 text-center md:text-left relative z-10">
-                                <div
-                                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-500/20 bg-teal-500/10 text-teal-400 text-xs font-semibold tracking-widest mb-6 uppercase shadow-[0_0_5px_#14b8a6]">
-                                    ✦ NEW BUNDLE
-                                </div>
-                                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-4">
+
+                            <div class="relative z-10 h-full flex flex-col justify-center p-10 md:p-16 w-full md:w-2/3">
+                                <h1
+                                    class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-4 drop-shadow-lg">
                                     Valorant Points <br />
                                     <span
-                                        class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">Bonus
+                                        class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-300">Bonus
                                         VP Tiap Pembelian.</span>
                                 </h1>
                                 <a href="#games"
-                                    class="inline-flex items-center gap-2 px-8 py-3.5 bg-teal-500 hover:bg-teal-400 text-black font-bold rounded-full transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(20,184,166,0.3)] text-sm">
+                                    class="inline-flex items-center gap-2 px-8 py-3.5 bg-teal-500 hover:bg-teal-400 text-black font-bold rounded-full transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(20,184,166,0.3)] text-sm w-max mt-4">
                                     Klaim Bonus ➔
                                 </a>
                             </div>
-                            <div class="md:w-2/5 flex items-center justify-center mt-10 md:mt-0 relative z-10">
-                                <div
-                                    class="w-40 h-40 md:w-56 md:h-56 rounded-full border border-teal-500/20 bg-gradient-to-br from-teal-900/40 to-black/30 flex items-center justify-center text-7xl md:text-9xl text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400 shadow-[0_0_30px_rgba(20,184,166,0.2)]">
-                                    🎯
-                                </div>
-                            </div>
                         </div>
 
-                        <div
-                            class="w-1/3 h-full relative flex flex-col md:flex-row items-center justify-between p-10 md:p-16 overflow-hidden">
-                            <div class="absolute inset-0 bg-gradient-to-r from-green-500/20 to-transparent opacity-40">
+                        <div class="w-1/3 h-full relative overflow-hidden group">
+                            <img src="{{ asset('images/free_fire.jpg') }}" alt="Banner Promo"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/80 to-transparent">
                             </div>
-                            <div class="md:w-3/5 text-center md:text-left relative z-10">
-                                <div
-                                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-xs font-semibold tracking-widest mb-6 uppercase shadow-[0_0_5px_#22c55e]">
-                                    🎁 FIRST TOP UP
-                                </div>
-                                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-4">
+
+                            <div class="relative z-10 h-full flex flex-col justify-center p-10 md:p-16 w-full md:w-2/3">
+                                <h1
+                                    class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-4 drop-shadow-lg">
                                     Free Fire <br />
                                     <span
-                                        class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">Ekstra
+                                        class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">Ekstra
                                         Diamond 50%.</span>
                                 </h1>
                                 <a href="#games"
-                                    class="inline-flex items-center gap-2 px-8 py-3.5 bg-green-500 hover:bg-green-400 text-black font-bold rounded-full transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(34,197,94,0.3)] text-sm">
+                                    class="inline-flex items-center gap-2 px-8 py-3.5 bg-green-500 hover:bg-green-400 text-black font-bold rounded-full transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(34,197,94,0.3)] text-sm w-max mt-4">
                                     Borong Sekarang ➔
                                 </a>
-                            </div>
-                            <div class="md:w-2/5 flex items-center justify-center mt-10 md:mt-0 relative z-10">
-                                <div
-                                    class="w-40 h-40 md:w-56 md:h-56 rounded-full border border-green-500/20 bg-gradient-to-br from-green-900/40 to-black/30 flex items-center justify-center text-7xl md:text-9xl text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400 shadow-[0_0_30px_rgba(34,197,94,0.2)]">
-                                    💎
-                                </div>
                             </div>
                         </div>
 
@@ -152,7 +132,7 @@
                 <div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
                     <div>
                         <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-2">Pilih Game Favoritmu</h2>
-                        <p class="text-gray-500 text-base md:text-lg">Jelajahi judul game populer dan temukan penawaran
+                        <p class="text-gray-500 text-base md:text-lg">Jelajahi judul game poler dan temukan penawaran
                             terbaik.</p>
                     </div>
                     <div
@@ -207,14 +187,87 @@
         </div>
     </main>
 
-    <footer class="border-t border-white/5 pt-16 pb-8 px-6 mt-20 relative z-10 bg-[#020202]">
-        <div class="container mx-auto max-w-7xl flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors cursor-pointer">
-                <span
-                    class="w-6 h-6 rounded bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-black text-xs font-bold">✦</span>
-                <span class="font-bold tracking-tight text-xl">DiamondKu</span>
+    <footer class="border-t border-white/5 pt-20 pb-10 px-6 mt-20 relative z-10 bg-[#020202]">
+        <div class="container mx-auto max-w-7xl">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-16">
+
+                <div class="col-span-1 md:col-span-2">
+                    <a href="/" class="flex items-center gap-2 mb-6 w-max">
+                        <span
+                            class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-black text-sm font-bold shadow-[0_0_15px_rgba(52,211,153,0.3)]">✦</span>
+                        <span class="font-extrabold tracking-tighter text-2xl text-white">Diamond<span
+                                class="text-emerald-400">Ku</span></span>
+                    </a>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-sm mb-6 font-light">
+                        Platform penyedia layanan top up game dan voucher digital termurah, tercepat, dan terpercaya di
+                        Indonesia. Sistem otomatis 24 jam untuk kepuasan gaming Anda.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-gray-400 hover:text-emerald-400 hover:border-emerald-500/50 hover:shadow-[0_0_15px_rgba(52,211,153,0.2)] transition-all">IG</a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-gray-400 hover:text-emerald-400 hover:border-emerald-500/50 hover:shadow-[0_0_15px_rgba(52,211,153,0.2)] transition-all">FB</a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-gray-400 hover:text-emerald-400 hover:border-emerald-500/50 hover:shadow-[0_0_15px_rgba(52,211,153,0.2)] transition-all">TT</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6 tracking-wide uppercase text-sm">Pintasan</h4>
+                    <ul class="space-y-4 text-sm text-gray-400 font-medium">
+                        <li><a href="/"
+                                class="hover:text-emerald-400 hover:translate-x-1 transition-all inline-block">Beranda</a>
+                        </li>
+                        <li><a href="#games"
+                                class="hover:text-emerald-400 hover:translate-x-1 transition-all inline-block">Daftar
+                                Game</a></li>
+                        <li><a href="#"
+                                class="hover:text-emerald-400 hover:translate-x-1 transition-all inline-block">Lacak
+                                Pesanan</a></li>
+                        <li><a href="#"
+                                class="hover:text-emerald-400 hover:translate-x-1 transition-all inline-block">Masuk /
+                                Daftar</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6 tracking-wide uppercase text-sm">Bantuan & Legal</h4>
+                    <ul class="space-y-4 text-sm text-gray-400 font-medium">
+                        <li><a href="#"
+                                class="hover:text-emerald-400 hover:translate-x-1 transition-all inline-block">Syarat &
+                                Ketentuan</a></li>
+                        <li><a href="#"
+                                class="hover:text-emerald-400 hover:translate-x-1 transition-all inline-block">Kebijakan
+                                Privasi</a></li>
+                        <li><a href="#"
+                                class="hover:text-emerald-400 hover:translate-x-1 transition-all inline-block">Hubungi
+                                Kami</a></li>
+                        <li><a href="#"
+                                class="hover:text-emerald-400 hover:translate-x-1 transition-all inline-block">FAQ</a>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
-            <p class="text-gray-600 text-sm font-medium">© 2026 DiamondKu Corp. Crafted for hardcore gamers.</p>
+
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-gray-500 text-sm font-medium">© 2026 DiamondKu Corp. All Rights Reserved.</p>
+                <div
+                    class="flex gap-3 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                    <div
+                        class="h-8 w-12 bg-white/10 rounded border border-white/5 flex items-center justify-center text-[10px] font-bold">
+                        QRIS</div>
+                    <div
+                        class="h-8 w-12 bg-white/10 rounded border border-white/5 flex items-center justify-center text-[10px] font-bold">
+                        DANA</div>
+                    <div
+                        class="h-8 w-12 bg-white/10 rounded border border-white/5 flex items-center justify-center text-[10px] font-bold">
+                        OVO</div>
+                    <div
+                        class="h-8 w-12 bg-white/10 rounded border border-white/5 flex items-center justify-center text-[10px] font-bold">
+                        BANK</div>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -226,10 +279,8 @@
             const totalSlides = 3;
 
             function updateSlider() {
-                // Menggeser posisi X dari track (0%, 33.33%, 66.66% dari parent 300%)
                 track.style.transform = `translateX(-${(currentIndex * 100) / totalSlides}%)`;
 
-                // Memperbarui tampilan titik navigasi di bawah
                 dots.forEach((dot, index) => {
                     if (index === currentIndex) {
                         dot.classList.replace('w-2', 'w-8');
@@ -248,15 +299,12 @@
                 updateSlider();
             }
 
-            // Interval otomatis setiap 5 detik (5000 ms)
             let slideInterval = setInterval(nextSlide, 5000);
 
-            // Membuat titik navigasi bisa diklik manual
             dots.forEach((dot, index) => {
                 dot.addEventListener('click', () => {
                     currentIndex = index;
                     updateSlider();
-                    // Mereset waktu otomatis agar tidak bentrok saat diklik manual
                     clearInterval(slideInterval);
                     slideInterval = setInterval(nextSlide, 5000);
                 });
