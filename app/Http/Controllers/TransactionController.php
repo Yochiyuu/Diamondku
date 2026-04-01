@@ -36,7 +36,9 @@ class TransactionController extends Controller
         ]);
 
         // 2. Konfigurasi Xendit
-        Configuration::setXenditKey(env('xnd_public_development_rstrS1DBHL18auB26zvFmIsZoDKcCn7Ax_AqvVUsY_GA451q9bAQkEoZjMJJZ1n'));
+        // Pastikan menggunakan Secret Key (xnd_development_...) bukan Public Key
+        Configuration::setXenditKey('xnd_development_WeE9Je5ZTEEMMkCOh8Lw7QQ8TMzg8Rkmhrjyp3TcUdRAbyzZGKDOYFGSiHNpdzHx');
+        
         $apiInstance = new InvoiceApi();
 
         $create_invoice_request = new CreateInvoiceRequest([
@@ -54,7 +56,7 @@ class TransactionController extends Controller
             // 3. Buat Invoice di Xendit
             $result = $apiInstance->createInvoice($create_invoice_request);
 
-            // Simpan link pembayaran ke kolom snap_token (biar ga ubah migrasi)
+            // Update kolom snap_token dengan URL invoice dari Xendit
             $transaction->update(['snap_token' => $result['invoice_url']]);
 
             return response()->json(['payment_url' => $result['invoice_url']]);

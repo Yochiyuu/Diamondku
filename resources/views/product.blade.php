@@ -118,10 +118,6 @@
                 <p class="text-emerald-500 text-xs italic">* Anda akan diarahkan ke halaman pembayaran aman Xendit
                     sesuai pilihan metode di atas.</p>
             </div>
-            
-            <p class="text-emerald-500 text-xs italic">* Pilihan metode pembayaran akan muncul di halaman pop-up
-                setelah Anda klik Beli Sekarang.</p>
-            </div>
 
             <button type="button" id="pay-button" disabled
                 class="w-full bg-emerald-500 text-black font-bold py-4 rounded-xl transition-colors opacity-50 cursor-not-allowed">
