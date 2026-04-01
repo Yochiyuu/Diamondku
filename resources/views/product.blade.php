@@ -7,7 +7,6 @@
     <title>Top Up {{ $category->name }} - DiamondKu</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}"></script>
 </head>
 
 <body class="bg-[#020202] text-white antialiased">
@@ -95,49 +94,33 @@
                 Metode Pembayaran
             </h2>
             <div class="mb-10 p-5 border border-white/10 bg-[#0a0a0a] rounded-xl">
-                <p class="text-gray-300 text-sm mb-4">Pembayaran diproses secara aman oleh <strong>Midtrans</strong>.
-                </p>
+                <p class="text-gray-300 text-sm mb-4">Pilih salah satu metode pembayaran:</p>
 
-                <div class="flex flex-wrap gap-3 mb-3">
-                    <div
-                        class="bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center w-20 h-12">
-                        <img src="{{ asset('images/qris.png') }}" alt="QRIS"
-                            class="max-h-full max-w-full object-contain"
-                            onerror="this.outerHTML='<span class=\'text-black text-xs font-bold\'>QRIS</span>'">
-                    </div>
-                    <div
-                        class="bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center w-20 h-12">
-                        <img src="{{ asset('images/dana.png') }}" alt="DANA"
-                            class="max-h-full max-w-full object-contain"
-                            onerror="this.outerHTML='<span class=\'text-black text-xs font-bold\'>DANA</span>'">
-                    </div>
-                    <div
-                        class="bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center w-20 h-12">
-                        <img src="{{ asset('images/ovo.png') }}" alt="OVO"
-                            class="max-h-full max-w-full object-contain"
-                            onerror="this.outerHTML='<span class=\'text-black text-xs font-bold\'>OVO</span>'">
-                    </div>
-                    <div
-                        class="bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center w-20 h-12">
-                        <img src="{{ asset('images/gopay.png') }}" alt="GoPay"
-                            class="max-h-full max-w-full object-contain"
-                            onerror="this.outerHTML='<span class=\'text-black text-xs font-bold\'>GoPay</span>'">
-                    </div>
-                    <div
-                        class="bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center w-20 h-12">
-                        <img src="{{ asset('images/bca_va.png') }}" alt="BCA VA"
-                            class="max-h-full max-w-full object-contain"
-                            onerror="this.outerHTML='<span class=\'text-black text-xs font-bold\'>VA</span>'">
-                    </div>
-                    <div
-                        class="bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center w-20 h-12">
-                        <img src="{{ asset('images/alfamart.png') }}" alt="Alfamart"
-                            class="max-h-full max-w-full object-contain"
-                            onerror="this.outerHTML='<span class=\'text-black text-xs font-bold\'>Alfamart</span>'">
-                    </div>
+                <div class="grid grid-cols-3 md:grid-cols-6 gap-3 mb-4">
+                    <label class="cursor-pointer group">
+                        <input type="radio" name="payment_method" value="QRIS" class="peer sr-only" checked>
+                        <div
+                            class="bg-white border-2 border-transparent rounded-lg p-2 flex items-center justify-center h-12 peer-checked:border-emerald-500 transition-all">
+                            <img src="{{ asset('images/qris.png') }}" alt="QRIS" class="max-h-full object-contain">
+                        </div>
+                    </label>
+
+                    <label class="cursor-pointer group">
+                        <input type="radio" name="payment_method" value="DANA" class="peer sr-only">
+                        <div
+                            class="bg-white border-2 border-transparent rounded-lg p-2 flex items-center justify-center h-12 peer-checked:border-emerald-500 transition-all">
+                            <img src="{{ asset('images/dana.png') }}" alt="DANA" class="max-h-full object-contain">
+                        </div>
+                    </label>
+
                 </div>
-                <p class="text-emerald-500 text-xs italic">* Pilihan metode pembayaran akan muncul di halaman pop-up
-                    setelah Anda klik Beli Sekarang.</p>
+
+                <p class="text-emerald-500 text-xs italic">* Anda akan diarahkan ke halaman pembayaran aman Xendit
+                    sesuai pilihan metode di atas.</p>
+            </div>
+            
+            <p class="text-emerald-500 text-xs italic">* Pilihan metode pembayaran akan muncul di halaman pop-up
+                setelah Anda klik Beli Sekarang.</p>
             </div>
 
             <button type="button" id="pay-button" disabled
@@ -152,7 +135,7 @@
         const payButton = document.getElementById('pay-button');
         const inputs = form.querySelectorAll('input[required]');
 
-        // Fungsi untuk mengecek apakah semua form wajib sudah diisi
+        // Fungsi validasi tombol
         function checkFormValidity() {
             if (form.checkValidity()) {
                 payButton.disabled = false;
@@ -167,14 +150,13 @@
             }
         }
 
-        // Pantau setiap perubahan pada input text dan radio button
         inputs.forEach(input => {
             input.addEventListener('input', checkFormValidity);
             input.addEventListener('change', checkFormValidity);
         });
 
-        document.getElementById('pay-button').onclick = async function() {
-            // Validasi akhir jaga-jaga
+        // Proses klik tombol bayar
+        payButton.onclick = async function() {
             if (!form.checkValidity()) {
                 form.reportValidity();
                 return;
@@ -182,31 +164,33 @@
 
             const formData = new FormData(form);
             const originalText = payButton.innerText;
+
             payButton.innerText = 'Memproses...';
             payButton.disabled = true;
 
             try {
-                const response = await fetch('/transaction/store', {
+                const response = await fetch("{{ route('checkout') }}", {
                     method: 'POST',
                     body: formData,
                     headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json'
                     }
                 });
 
                 const data = await response.json();
 
-                if (data.snap_token) {
-                    snap.pay(data.snap_token, {
-                        onClose: function() {
-                            payButton.innerText = originalText;
-                            payButton.disabled = false;
-                        }
-                    });
+                if (data.payment_url) {
+                    // Redirect langsung ke halaman invoice Xendit
+                    window.location.href = data.payment_url;
+                } else {
+                    alert('Gagal: ' + (data.error || 'Terjadi kesalahan'));
+                    payButton.innerText = originalText;
+                    payButton.disabled = false;
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('Terjadi kesalahan saat memproses pembayaran.');
+                alert('Terjadi kesalahan koneksi ke server.');
                 payButton.innerText = originalText;
                 payButton.disabled = false;
             }
