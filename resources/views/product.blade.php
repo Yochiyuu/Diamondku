@@ -96,23 +96,48 @@
             <div class="mb-10 p-5 border border-white/10 bg-[#0a0a0a] rounded-xl">
                 <p class="text-gray-300 text-sm mb-4">Pilih salah satu metode pembayaran:</p>
 
-                <div class="grid grid-cols-3 md:grid-cols-6 gap-3 mb-4">
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-4">
                     <label class="cursor-pointer group">
                         <input type="radio" name="payment_method" value="QRIS" class="peer sr-only" checked>
                         <div
-                            class="bg-white border-2 border-transparent rounded-lg p-2 flex items-center justify-center h-12 peer-checked:border-emerald-500 transition-all">
-                            <img src="{{ asset('images/qris.png') }}" alt="QRIS" class="max-h-full object-contain">
+                            class="bg-white border-2 border-transparent rounded-lg p-2 flex items-center justify-center h-14 peer-checked:border-emerald-500 transition-all">
+                            <img src="{{ asset('images/QRIS_logo.svg') }}" alt="QRIS" class="max-h-full object-contain">
                         </div>
                     </label>
 
                     <label class="cursor-pointer group">
                         <input type="radio" name="payment_method" value="DANA" class="peer sr-only">
                         <div
-                            class="bg-white border-2 border-transparent rounded-lg p-2 flex items-center justify-center h-12 peer-checked:border-emerald-500 transition-all">
-                            <img src="{{ asset('images/dana.png') }}" alt="DANA" class="max-h-full object-contain">
+                            class="bg-white border-2 border-transparent rounded-lg p-2 flex items-center justify-center h-14 peer-checked:border-emerald-500 transition-all">
+                            <img src="{{ asset('images/DANA_logo.svg') }}" alt="DANA" class="max-h-full object-contain">
                         </div>
                     </label>
 
+                    <label class="cursor-pointer group">
+                        <input type="radio" name="payment_method" value="OVO" class="peer sr-only">
+                        <div
+                            class="bg-white border-2 border-transparent rounded-lg p-2 flex items-center justify-center h-14 peer-checked:border-emerald-500 transition-all">
+                            <img src="{{ asset('images/OVO_logo.png') }}" alt="OVO" class="max-h-full object-contain">
+                        </div>
+                    </label>
+
+                    <label class="cursor-pointer group">
+                        <input type="radio" name="payment_method" value="SHOPEEPAY" class="peer sr-only">
+                        <div
+                            class="bg-white border-2 border-transparent rounded-lg p-2 flex items-center justify-center h-14 peer-checked:border-emerald-500 transition-all">
+                            <img src="{{ asset('images/SPAY_logo.png') }}" alt="ShopeePay"
+                                class="max-h-full object-contain">
+                        </div>
+                    </label>
+
+                    <label class="cursor-pointer group">
+                        <input type="radio" name="payment_method" value="LINKAJA" class="peer sr-only">
+                        <div
+                            class="bg-white border-2 border-transparent rounded-lg p-2 flex items-center justify-center h-14 peer-checked:border-emerald-500 transition-all">
+                            <img src="{{ asset('images/LINKAJA_logo.png') }}" alt="LinkAja"
+                                class="max-h-full object-contain">
+                        </div>
+                    </label>
                 </div>
 
                 <p class="text-emerald-500 text-xs italic">* Anda akan diarahkan ke halaman pembayaran aman Xendit

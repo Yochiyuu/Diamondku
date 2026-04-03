@@ -13,12 +13,13 @@ class TransactionController extends Controller
 {
     public function store(Request $request)
     {
-        // Validasi input
+        // Validasi input ditambah dengan payment_method
         $request->validate([
-            'product_id' => 'required|exists:products,id',
-            'target_id'  => 'required|string',
-            'email'      => 'required|email',
-            'phone'      => 'required|string',
+            'product_id'     => 'required|exists:products,id',
+            'target_id'      => 'required|string',
+            'email'          => 'required|email',
+            'phone'          => 'required|string',
+            'payment_method' => 'required|string|in:QRIS,DANA,OVO,SHOPEEPAY,LINKAJA',
         ]);
 
         $product = Product::findOrFail($request->product_id);
@@ -36,7 +37,6 @@ class TransactionController extends Controller
         ]);
 
         // 2. Konfigurasi Xendit
-        // Pastikan menggunakan Secret Key (xnd_development_...) bukan Public Key
         Configuration::setXenditKey('xnd_development_WeE9Je5ZTEEMMkCOh8Lw7QQ8TMzg8Rkmhrjyp3TcUdRAbyzZGKDOYFGSiHNpdzHx');
         
         $apiInstance = new InvoiceApi();
@@ -49,6 +49,8 @@ class TransactionController extends Controller
                 'email' => $request->email,
                 'mobile_number' => $request->phone,
             ],
+            // Parameter ini yang mengunci dan langsung mengarah ke metode pembayaran spesifik
+            'payment_methods' => [$request->payment_method],
             'success_redirect_url' => url('/'), 
         ]);
 

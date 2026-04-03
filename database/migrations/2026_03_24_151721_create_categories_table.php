@@ -11,8 +11,9 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug')->unique(); // Tambahan kolom slug
+            $table->string('slug')->unique();
             $table->string('image_url');
+            $table->string('type')->default('game'); // Tambahan kolom type
             $table->timestamps();
         });
     }
