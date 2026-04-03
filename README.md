@@ -1,8 +1,8 @@
-# 💎 DiamondKu - Top Up Game & Voucher Store
+#  DiamondKu - Top Up Game & Voucher Store
 
 DiamondKu adalah platform web penyedia layanan *top up* kredit game dan *membership* digital yang dirancang dengan antarmuka *Dark Glassmorphism* yang modern, responsif, dan elegan. Sistem ini dilengkapi dengan integrasi *payment gateway* otomatis untuk memastikan transaksi yang cepat dan aman.
 
-## ✨ Fitur Utama
+##  Fitur Utama
 
 * **Antarmuka Responsif & Modern:** Desain antarmuka *mobile-first* menggunakan Tailwind CSS dengan efek *glassmorphism* dan animasi *slider* yang dinamis.
 * **Katalog Produk Terkategori:** Pengelompokan produk secara otomatis (Game Mobile, PC, dan Membership/Streaming).
@@ -10,14 +10,14 @@ DiamondKu adalah platform web penyedia layanan *top up* kredit game dan *members
 * **Pelacakan Pesanan Real-time (Track Order):** Pengguna dapat memeriksa status transaksi mereka (Pending, Success, Failed) hanya dengan memasukkan *Order ID*.
 * **Sistem Autentikasi:** Fitur pendaftaran (Register) dan masuk (Login) pengguna yang aman untuk menyimpan riwayat dan memudahkan transaksi.
 
-## 🛠️ Teknologi yang Digunakan
+##  Teknologi yang Digunakan
 
 * **Backend:** Laravel (PHP)
 * **Frontend:** Blade Templating, Tailwind CSS, Vanilla JavaScript
 * **Database:** MySQL
 * **Payment Gateway:** Xendit API
 
-## 📋 Persyaratan Sistem
+##  Persyaratan Sistem
 
 Sebelum menjalankan proyek ini, pastikan sistem Anda memiliki:
 * PHP >= 8.2
@@ -26,7 +26,7 @@ Sebelum menjalankan proyek ini, pastikan sistem Anda memiliki:
 * MySQL (atau MariaDB)
 * Akun Xendit (untuk API Key pengujian/produksi)
 
-## 🚀 Panduan Instalasi
+##  Panduan Instalasi
 
 Ikuti langkah-langkah berikut untuk menjalankan proyek DiamondKu di lingkungan lokal Anda:
 
