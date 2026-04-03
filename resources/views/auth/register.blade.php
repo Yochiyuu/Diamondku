@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar - DiamondKu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+
+<body
+    class="antialiased selection:bg-emerald-500 selection:text-black flex items-center justify-center min-h-screen relative overflow-hidden py-10">
+
+    <div class="blob bg-emerald-600 w-96 h-96 rounded-full top-0 right-0 absolute"></div>
+    <div class="blob bg-teal-900 w-[500px] h-[500px] rounded-full bottom-0 left-0 opacity-20 absolute"></div>
+
+    <div class="w-full max-w-md z-10 px-6">
+        <div class="text-center mb-8">
+            <a href="/" class="text-3xl font-extrabold tracking-tighter inline-flex items-center gap-2">
+                Diamond<span class="text-emerald-400 inline -ml-1">Ku</span>
+            </a>
+            <p class="text-gray-400 mt-2 text-sm">Buat akun baru untuk mulai top up</p>
+        </div>
+
+        <div class="glass-card rounded-3xl p-8 border border-white/5 shadow-[0_0_30px_rgba(0,0,0,0.4)]">
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Nama Lengkap</label>
+                    <input type="text" name="name" value="{{ old('name') }}"
+                        class="w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all placeholder:text-gray-600"
+                        placeholder="Masukkan nama..." required autofocus>
+                    @error('name')
+                        <span class="text-red-400 text-xs mt-1 block">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Email Address</label>
+                    <input type="email" name="email" value="{{ old('email') }}"
+                        class="w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all placeholder:text-gray-600"
+                        placeholder="Masukkan email aktif..." required>
+                    @error('email')
+                        <span class="text-red-400 text-xs mt-1 block">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Password</label>
+                    <input type="password" name="password"
+                        class="w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all placeholder:text-gray-600"
+                        placeholder="Minimal 8 karakter..." required>
+                    @error('password')
+                        <span class="text-red-400 text-xs mt-1 block">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Konfirmasi Password</label>
+                    <input type="password" name="password_confirmation"
+                        class="w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all placeholder:text-gray-600"
+                        placeholder="Ulangi password..." required>
+                </div>
+                <button type="submit"
+                    class="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold py-3.5 rounded-xl transition-all transform hover:scale-[1.02] shadow-[0_0_15px_rgba(52,211,153,0.3)]">
+                    Daftar Sekarang
+                </button>
+            </form>
+
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-400">Sudah punya akun? <a href="{{ route('login') }}"
+                        class="text-emerald-400 hover:text-emerald-300 font-bold transition-colors">Masuk di sini</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

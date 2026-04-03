@@ -145,7 +145,7 @@ class UpdateCategorySeeder extends Seeder
                     ['name' => 'Individual (1 Bulan)', 'price' => 54990],
                     ['name' => 'Duo (1 Bulan)', 'price' => 71490],
                     ['name' => 'Family (1 Bulan)', 'price' => 86900],
-                    ['name' => 'Individual (3 Bulan)', 'price' => 165000],
+                    ['name' => 'Individual (3 Bulan)', 'price' => 165000], 
                     ['name' => 'Individual (1 Tahun)', 'price' => 549000],
                 ]
             ],
