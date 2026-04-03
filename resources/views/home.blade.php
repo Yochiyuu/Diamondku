@@ -137,17 +137,6 @@
                     </div>
 
                     <div class="flex items-center gap-4 w-full md:w-auto justify-between md:justify-end">
-                        <div class="flex gap-2">
-                            <button id="slide-left"
-                                class="bg-[#0a0a0a] border border-white/10 hover:border-emerald-500 hover:bg-emerald-900/20 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all shadow-[0_0_10px_rgba(0,0,0,0.5)]">
-                                ❮
-                            </button>
-                            <button id="slide-right"
-                                class="bg-[#0a0a0a] border border-white/10 hover:border-emerald-500 hover:bg-emerald-900/20 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all shadow-[0_0_10px_rgba(0,0,0,0.5)]">
-                                ❯
-                            </button>
-                        </div>
-
                         <div
                             class="glass-card px-5 py-2.5 rounded-full flex gap-3 items-center w-full md:w-auto border border-white/5 shadow-[0_0_10px_rgba(0,0,0,0.3)]">
                             <span class="text-gray-600">🔍</span>
@@ -157,45 +146,112 @@
                     </div>
                 </div>
 
-                <div id="game-slider"
-                    class="grid grid-rows-2 grid-flow-col gap-5 md:gap-6 overflow-x-auto snap-x snap-mandatory pb-6 auto-cols-[160px] md:auto-cols-[220px] scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                    @php
-                        $games = $categories->where('type', '!=', 'membership');
-                    @endphp
+                @php
+                    // Memfilter kategori game dan membaginya menjadi 2 baris
+                    $games = $categories
+                        ->filter(function ($item) {
+                            return strtolower(trim($item->type)) !== 'membership';
+                        })
+                        ->values();
 
-                    @forelse ($games as $category)
-                        <a href="/product/{{ $category->slug }}"
-                            class="glass-card snap-start rounded-2xl p-4 group cursor-pointer hover:-translate-y-2 hover:border-emerald-500/50 hover:bg-emerald-900/10 transition-all duration-300 relative overflow-hidden flex flex-col h-full border border-white/5 shadow-[0_0_10px_rgba(0,0,0,0.3)]">
-                            <div
-                                class="aspect-[4/5] rounded-xl bg-[#0a0a0a] mb-5 overflow-hidden relative border border-white/5">
-                                <img src="{{ asset('images/' . $category->image_url) }}" alt="{{ $category->name }}"
-                                    class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500">
-                            </div>
-                            <div class="mt-auto">
-                                <h3
-                                    class="font-bold text-lg text-white group-hover:text-emerald-400 transition-colors leading-tight mb-2 tracking-tight">
-                                    {{ $category->name }}</h3>
-                                <div class="flex items-center justify-between mt-2">
-                                    <p class="text-xs text-gray-500 flex items-center gap-1.5 font-medium">
-                                        <span
-                                            class="w-1.5 h-1.5 rounded-full bg-emerald-500 status-glow shadow-[0_0_5px_#10b981]"></span>
-                                        Active
-                                    </p>
-                                    <span
-                                        class="text-xs text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity font-bold tracking-wider">TOP
-                                        UP ➔</span>
+                    $half = ceil($games->count() > 0 ? $games->count() / 2 : 0);
+                    $gamesRow1 = $games->take($half);
+                    $gamesRow2 = $games->skip($half);
+                @endphp
+
+                <div class="relative group mb-6">
+                    <button id="slide-left-1"
+                        class="absolute -left-5 top-[45%] -translate-y-1/2 z-20 bg-[#0a0a0a] border border-white/10 hover:border-emerald-500 hover:bg-emerald-900/40 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-[0_0_15px_rgba(0,0,0,0.8)] opacity-0 group-hover:opacity-100 hidden md:flex">
+                        ❮
+                    </button>
+
+                    <div id="game-slider-1"
+                        class="grid grid-rows-1 grid-flow-col gap-5 md:gap-6 overflow-x-auto snap-x snap-mandatory pb-4 auto-cols-[160px] md:auto-cols-[220px] scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+
+                        @forelse ($gamesRow1 as $category)
+                            <a href="/product/{{ $category->slug }}"
+                                class="glass-card snap-start rounded-2xl p-4 group/card cursor-pointer hover:-translate-y-2 hover:border-emerald-500/50 hover:bg-emerald-900/10 transition-all duration-300 relative overflow-hidden flex flex-col h-full border border-white/5 shadow-[0_0_10px_rgba(0,0,0,0.3)]">
+                                <div
+                                    class="aspect-[4/5] rounded-xl bg-[#0a0a0a] mb-5 overflow-hidden relative border border-white/5">
+                                    <img src="{{ asset('images/' . $category->image_url) }}" alt="{{ $category->name }}"
+                                        class="w-full h-full object-cover object-top group-hover/card:scale-110 transition-transform duration-500">
                                 </div>
+                                <div class="mt-auto">
+                                    <h3
+                                        class="font-bold text-lg text-white group-hover/card:text-emerald-400 transition-colors leading-tight mb-2 tracking-tight">
+                                        {{ $category->name }}</h3>
+                                    <div class="flex items-center justify-between mt-2">
+                                        <p class="text-xs text-gray-500 flex items-center gap-1.5 font-medium">
+                                            <span
+                                                class="w-1.5 h-1.5 rounded-full bg-emerald-500 status-glow shadow-[0_0_5px_#10b981]"></span>
+                                            Active
+                                        </p>
+                                        <span
+                                            class="text-xs text-emerald-400 opacity-0 group-hover/card:opacity-100 transition-opacity font-bold tracking-wider">TOP
+                                            UP ➔</span>
+                                    </div>
+                                </div>
+                            </a>
+                        @empty
+                            <div
+                                class="col-span-full glass-card rounded-3xl p-16 text-center border border-dashed border-white/10 mt-10 w-full min-w-[300px]">
+                                <div class="text-5xl mb-6 opacity-30">🕹️</div>
+                                <h3 class="text-2xl font-bold mb-2 text-gray-300">Belum ada data game</h3>
+                                <p class="text-gray-500">Jalankan database seeder untuk menampilkan katalog produk.</p>
                             </div>
-                        </a>
-                    @empty
-                        <div
-                            class="col-span-full glass-card rounded-3xl p-16 text-center border border-dashed border-white/10 mt-10 w-full min-w-[300px]">
-                            <div class="text-5xl mb-6 opacity-30">🕹️</div>
-                            <h3 class="text-2xl font-bold mb-2 text-gray-300">Belum ada data game</h3>
-                            <p class="text-gray-500">Jalankan database seeder untuk menampilkan katalog produk.</p>
-                        </div>
-                    @endforelse
+                        @endforelse
+                    </div>
+
+                    <button id="slide-right-1"
+                        class="absolute -right-5 top-[45%] -translate-y-1/2 z-20 bg-[#0a0a0a] border border-white/10 hover:border-emerald-500 hover:bg-emerald-900/40 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-[0_0_15px_rgba(0,0,0,0.8)] opacity-0 group-hover:opacity-100 hidden md:flex">
+                        ❯
+                    </button>
                 </div>
+
+                @if ($gamesRow2->count() > 0)
+                    <div class="relative group">
+                        <button id="slide-left-2"
+                            class="absolute -left-5 top-[45%] -translate-y-1/2 z-20 bg-[#0a0a0a] border border-white/10 hover:border-emerald-500 hover:bg-emerald-900/40 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-[0_0_15px_rgba(0,0,0,0.8)] opacity-0 group-hover:opacity-100 hidden md:flex">
+                            ❮
+                        </button>
+
+                        <div id="game-slider-2"
+                            class="grid grid-rows-1 grid-flow-col gap-5 md:gap-6 overflow-x-auto snap-x snap-mandatory pb-4 auto-cols-[160px] md:auto-cols-[220px] scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+
+                            @foreach ($gamesRow2 as $category)
+                                <a href="/product/{{ $category->slug }}"
+                                    class="glass-card snap-start rounded-2xl p-4 group/card cursor-pointer hover:-translate-y-2 hover:border-emerald-500/50 hover:bg-emerald-900/10 transition-all duration-300 relative overflow-hidden flex flex-col h-full border border-white/5 shadow-[0_0_10px_rgba(0,0,0,0.3)]">
+                                    <div
+                                        class="aspect-[4/5] rounded-xl bg-[#0a0a0a] mb-5 overflow-hidden relative border border-white/5">
+                                        <img src="{{ asset('images/' . $category->image_url) }}"
+                                            alt="{{ $category->name }}"
+                                            class="w-full h-full object-cover object-top group-hover/card:scale-110 transition-transform duration-500">
+                                    </div>
+                                    <div class="mt-auto">
+                                        <h3
+                                            class="font-bold text-lg text-white group-hover/card:text-emerald-400 transition-colors leading-tight mb-2 tracking-tight">
+                                            {{ $category->name }}</h3>
+                                        <div class="flex items-center justify-between mt-2">
+                                            <p class="text-xs text-gray-500 flex items-center gap-1.5 font-medium">
+                                                <span
+                                                    class="w-1.5 h-1.5 rounded-full bg-emerald-500 status-glow shadow-[0_0_5px_#10b981]"></span>
+                                                Active
+                                            </p>
+                                            <span
+                                                class="text-xs text-emerald-400 opacity-0 group-hover/card:opacity-100 transition-opacity font-bold tracking-wider">TOP
+                                                UP ➔</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
+
+                        <button id="slide-right-2"
+                            class="absolute -right-5 top-[45%] -translate-y-1/2 z-20 bg-[#0a0a0a] border border-white/10 hover:border-emerald-500 hover:bg-emerald-900/40 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-[0_0_15px_rgba(0,0,0,0.8)] opacity-0 group-hover:opacity-100 hidden md:flex">
+                            ❯
+                        </button>
+                    </div>
+                @endif
             </section>
 
             <section id="memberships" class="mb-16">
@@ -209,8 +265,10 @@
 
                 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 md:gap-6">
                     @php
-                        // Memfilter hanya kategori membership
-                        $memberships = $categories->where('type', 'membership');
+                        // Memfilter hanya kategori membership dengan strtolower
+                        $memberships = $categories->filter(function ($item) {
+                            return strtolower(trim($item->type)) === 'membership';
+                        });
                     @endphp
 
                     @forelse ($memberships as $category)
@@ -375,25 +433,40 @@
             });
         });
 
-        // Tambahkan di dalam <script> yang ada di paling bawah halaman
+        // Kontrol Slider Baris 1
+        const slider1 = document.getElementById('game-slider-1');
+        const left1 = document.getElementById('slide-left-1');
+        const right1 = document.getElementById('slide-right-1');
 
-        // Fungsi untuk menggeser Slider Game
-        const gameSlider = document.getElementById('game-slider');
-        const slideLeft = document.getElementById('slide-left');
-        const slideRight = document.getElementById('slide-right');
-
-        if (slideLeft && slideRight && gameSlider) {
-            slideLeft.addEventListener('click', () => {
-                // Geser ke kiri sejauh 400px
-                gameSlider.scrollBy({
+        if (left1 && right1 && slider1) {
+            left1.addEventListener('click', () => {
+                slider1.scrollBy({
                     left: -400,
                     behavior: 'smooth'
                 });
             });
+            right1.addEventListener('click', () => {
+                slider1.scrollBy({
+                    left: 400,
+                    behavior: 'smooth'
+                });
+            });
+        }
 
-            slideRight.addEventListener('click', () => {
-                // Geser ke kanan sejauh 400px
-                gameSlider.scrollBy({
+        // Kontrol Slider Baris 2
+        const slider2 = document.getElementById('game-slider-2');
+        const left2 = document.getElementById('slide-left-2');
+        const right2 = document.getElementById('slide-right-2');
+
+        if (left2 && right2 && slider2) {
+            left2.addEventListener('click', () => {
+                slider2.scrollBy({
+                    left: -400,
+                    behavior: 'smooth'
+                });
+            });
+            right2.addEventListener('click', () => {
+                slider2.scrollBy({
                     left: 400,
                     behavior: 'smooth'
                 });
