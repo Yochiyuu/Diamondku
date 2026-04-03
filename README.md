@@ -1,58 +1,102 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 💎 DiamondKu - Top Up Game & Voucher Store
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+DiamondKu adalah platform web penyedia layanan *top up* kredit game dan *membership* digital yang dirancang dengan antarmuka *Dark Glassmorphism* yang modern, responsif, dan elegan. Sistem ini dilengkapi dengan integrasi *payment gateway* otomatis untuk memastikan transaksi yang cepat dan aman.
 
-## About Laravel
+## ✨ Fitur Utama
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+* **Antarmuka Responsif & Modern:** Desain antarmuka *mobile-first* menggunakan Tailwind CSS dengan efek *glassmorphism* dan animasi *slider* yang dinamis.
+* **Katalog Produk Terkategori:** Pengelompokan produk secara otomatis (Game Mobile, PC, dan Membership/Streaming).
+* **Integrasi Payment Gateway (Xendit):** Mendukung pembayaran otomatis dan instan melalui berbagai saluran seperti QRIS, DANA, OVO, ShopeePay, LinkAja, dan Virtual Account Bank.
+* **Pelacakan Pesanan Real-time (Track Order):** Pengguna dapat memeriksa status transaksi mereka (Pending, Success, Failed) hanya dengan memasukkan *Order ID*.
+* **Sistem Autentikasi:** Fitur pendaftaran (Register) dan masuk (Login) pengguna yang aman untuk menyimpan riwayat dan memudahkan transaksi.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ Teknologi yang Digunakan
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* **Backend:** Laravel (PHP)
+* **Frontend:** Blade Templating, Tailwind CSS, Vanilla JavaScript
+* **Database:** MySQL
+* **Payment Gateway:** Xendit API
 
-## Learning Laravel
+## 📋 Persyaratan Sistem
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Sebelum menjalankan proyek ini, pastikan sistem Anda memiliki:
+* PHP >= 8.2
+* Composer
+* Node.js & NPM
+* MySQL (atau MariaDB)
+* Akun Xendit (untuk API Key pengujian/produksi)
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🚀 Panduan Instalasi
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+Ikuti langkah-langkah berikut untuk menjalankan proyek DiamondKu di lingkungan lokal Anda:
 
-## Agentic Development
+1.  **Kloning Repositori**
+    ```bash
+    git clone [https://github.com/Yochiyuu/diamondku.git]
+    ```
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+2.  **Instalasi Dependensi PHP (Composer)**
+    ```bash
+    composer install
+    ```
 
-```bash
-composer require laravel/boost --dev
+3.  **Instalasi Dependensi Frontend (NPM)**
+    ```bash
+    npm install
+    npm run build
+    ```
 
-php artisan boost:install
-```
+4.  **Konfigurasi Environment**
+    Salin file konfigurasi *environment* bawaan dan sesuaikan dengan pengaturan database lokal Anda.
+    ```bash
+    cp .env.example .env
+    ```
+    Buka file `.env` dan atur koneksi database:
+    ```env
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=diamondku_db
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+5.  **Konfigurasi API Xendit**
+    Tambahkan Secret API Key dari dashboard Xendit Anda ke dalam file `.env`:
+    ```env
+    XENDIT_SECRET_KEY=xnd_development_... (masukkan key Anda di sini)
+    ```
 
-## Contributing
+6.  **Generate Application Key**
+    ```bash
+    php artisan key:generate
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+7.  **Migrasi Database dan Seeding**
+    Jalankan migrasi untuk membuat tabel beserta data awal (kategori, produk, dan admin default) jika tersedia.
+    ```bash
+    php artisan migrate --seed
+    ```
 
-## Code of Conduct
+8.  **Tautkan Storage (Opsional, untuk gambar lokal)**
+    ```bash
+    php artisan storage:link
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+9.  **Jalankan Server Development**
+    ```bash
+    php artisan serve
+    ```
+    Aplikasi kini dapat diakses melalui browser di alamat: `http://localhost:8000`
 
-## Security Vulnerabilities
+## 🗂️ Struktur Direktori Utama Terkait Fitur
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+* `app/Http/Controllers/AuthController.php` - Menangani logika login dan pendaftaran pengguna.
+* `app/Http/Controllers/TransactionController.php` - Menangani logika pembuatan *invoice* (Xendit) dan pelacakan *Order ID*.
+* `resources/views/home.blade.php` - Halaman utama dengan *slider banner* dan katalog produk berdesain *glassmorphism*.
+* `resources/views/track-order.blade.php` - Halaman khusus untuk mencari status resi/pesanan.
+* `routes/web.php` - Konfigurasi rute URL aplikasi.
 
-## License
+## 📄 Lisensi
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Proyek ini bersifat *open-source* dan tersedia di bawah [Lisensi MIT](https://opensource.org/licenses/MIT).
